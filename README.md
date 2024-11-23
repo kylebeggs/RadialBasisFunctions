@@ -1,9 +1,9 @@
 # RadialBasisFunctions.jl
 
-[![Build Status](https://github.com/kylebeggs/RadialBasisFunctions.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/kylebeggs/RadialBasisFunctions.jl/actions/workflows/CI.yml?query=branch%3Amain)
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://kylebeggs.github.io/RadialBasisFunctions.jl/stable)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://kylebeggs.github.io/RadialBasisFunctions.jl/dev)
-[![License File](https://img.shields.io/badge/license-MIT-blue)](https://github.com/kylebeggs/RadialBasisFunctions.jl/blob/master/LICENSE)
+[![Build Status](https://github.com/JuliaMeshless/RadialBasisFunctions.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/JuliaMeshless/RadialBasisFunctions.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://JuliaMeshless.github.io/RadialBasisFunctions.jl/stable)
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://JuliaMeshless.github.io/RadialBasisFunctions.jl/dev)
+[![License File](https://img.shields.io/badge/license-MIT-blue)](https://github.com/JuliaMeshless/RadialBasisFunctions.jl/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/634682663.svg)](https://zenodo.org/badge/latestdoi/634682663)
 
 This package intends to provide tools for all things regarding Radial Basis Functions (RBF). 

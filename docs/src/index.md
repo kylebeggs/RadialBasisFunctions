@@ -4,7 +4,7 @@ CurrentModule = RadialBasisFunctions
 
 # RadialBasisFunctions.jl
 
-Documentation for [RadialBasisFunctions](https://github.com/kylebeggs/RadialBasisFunctions.jl).
+Documentation for [RadialBasisFunctions](https://github.com/JuliaMeshless/RadialBasisFunctions.jl).
 
 This package intends to provide tools for all things regarding Radial Basis Functions (RBF). 
 

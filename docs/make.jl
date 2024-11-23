@@ -9,10 +9,10 @@ makedocs(;
     modules=[RadialBasisFunctions],
     authors="Kyle Beggs",
     sitename="RadialBasisFunctions.jl",
-    repo = Documenter.Remotes.GitHub("kylebeggs", "RadialBasisFunctions.jl"),
+    repo=Documenter.Remotes.GitHub("JuliaMeshless", "RadialBasisFunctions.jl"),
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
-        canonical="https://kylebeggs.github.io/RadialBasisFunctions.jl",
+        canonical="https://JuliaMeshless.github.io/RadialBasisFunctions.jl",
         edit_link="main",
         assets=String[],
     ),
@@ -24,4 +24,8 @@ makedocs(;
     ],
 )
 
-deploydocs(; repo="github.com/kylebeggs/RadialBasisFunctions.jl", devbranch="main", versions=["stable" => "v^", "dev" => "dev"])
+deploydocs(;
+    repo="github.com/JuliaMeshless/RadialBasisFunctions.jl",
+    devbranch="main",
+    versions=["stable" => "v^", "dev" => "dev"],
+)
