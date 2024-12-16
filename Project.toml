@@ -23,6 +23,3 @@ PrecompileTools = "1"
 StaticArraysCore = "1.4"
 SymRCM = "0.2"
 julia = "1.7"
-
-[extras]
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
