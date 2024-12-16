@@ -6,7 +6,6 @@ on:
       - 'LICENSE.md'
       - 'README.md'
       - '.github/workflows/CompatHelper.yml'
-      - '.github/workflows/SpellCheck.yml'
       - '.github/workflows/TagBot.yml'
       - 'docs/**'
   workflow_dispatch:
@@ -41,7 +40,7 @@ jobs:
       - uses: julia-actions/julia-downgrade-compat@v1
         with:
           skip: LinearAlgebra, Random, Statistics
-          projects: ., test, docs
+          projects: .
       - uses: julia-actions/julia-buildpkg@v1
         env:
           PYTHON: ""
