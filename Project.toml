@@ -15,8 +15,8 @@ StaticArraysCore = "1e83bf80-4336-4d27-bf5d-d5a4f845583c"
 SymRCM = "286e6d88-80af-4590-acc9-0001b223b9bd"
 
 [compat]
-ChunkSplitters = "2.0"
-Combinatorics = "1.0"
+ChunkSplitters = "3"
+Combinatorics = "1"
 Distances = "0.10"
 NearestNeighbors = "0.4"
 PrecompileTools = "1"
