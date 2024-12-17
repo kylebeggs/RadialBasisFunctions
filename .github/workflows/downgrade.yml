@@ -31,9 +31,17 @@ jobs:
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.version }}
+      - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-downgrade-compat@v1
         with:
           skip: LinearAlgebra, Random, Statistics
           projects: ., test, docs
       - uses: julia-actions/julia-buildpkg@v1
-      - uses: julia-actions/julia-runtest@v1
+        env:
+          PYTHON: ""
+      - name: Run tests without coverage
+        uses: julia-actions/julia-runtest@v1
+        with:
+          coverage: false
+        env:
+          PYTHON: ""
