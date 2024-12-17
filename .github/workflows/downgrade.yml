@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   downgrade_test:
-    name: Downgrade ${{ matrix.os }} - ${{ github.event_name }}
+    name: Downgrade ${{ matrix.os }} on ${{ matrix.version }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -32,10 +32,10 @@ jobs:
         with:
           version: ${{ matrix.version }}
       - uses: julia-actions/cache@v2
-      - uses: julia-actions/julia-downgrade-compat@v1
-        with:
-          skip: LinearAlgebra, Random, Statistics
-          projects: ., test, docs
+      #- uses: julia-actions/julia-downgrade-compat@v1
+      #  with:
+      #    skip: LinearAlgebra, Random, Statistics
+      #    projects: ., test, docs
       - uses: julia-actions/julia-buildpkg@v1
         env:
           PYTHON: ""
