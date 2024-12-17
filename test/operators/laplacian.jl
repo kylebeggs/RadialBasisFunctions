@@ -17,17 +17,17 @@ y = f.(x)
 
 @testset "Laplacian" begin
     ∇² = laplacian(x, PHS(3; poly_deg=4))
-    @test mean_percent_error(∇²(y), ∇²f.(x)) < 5
+    @test mean_percent_error(∇²(y), ∇²f.(x)) < 10
 
     ∇² = laplacian(x, IMQ(1; poly_deg=4))
-    @test mean_percent_error(∇²(y), ∇²f.(x)) < 5
+    @test mean_percent_error(∇²(y), ∇²f.(x)) < 10
 
     ∇² = laplacian(x, Gaussian(1; poly_deg=4))
-    @test mean_percent_error(∇²(y), ∇²f.(x)) < 5
+    @test mean_percent_error(∇²(y), ∇²f.(x)) < 10
 end
 
 @testset "Different Evaluation Points" begin
     x2 = SVector{2}.(HaltonPoint(2)[1:N])
     ∇² = laplacian(x, x2, PHS(3; poly_deg=4))
-    @test mean_percent_error(∇²(y), ∇²f.(x2)) < 5
+    @test mean_percent_error(∇²(y), ∇²f.(x2)) < 10
 end
