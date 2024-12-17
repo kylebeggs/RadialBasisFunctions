@@ -38,7 +38,7 @@ function _build_weights(data, eval_points, adjl, basis, ℒrbf, ℒmon, mon)
     d = Vector{Vector{eltype(data)}}(undef, nchunks)
 
     # build stencil for each data point and store in global weight matrix
-    Threads.@threads for (xrange, ichunk) in chunks(adjl, nchunks)
+    Threads.@threads for (ichunk, xrange) in enumerate(index_chunks(adjl; n=nchunks))
         for i in xrange
             I[((i - 1) * k + 1):(i * k)] .= i
             d[ichunk] = data[adjl[i]]
