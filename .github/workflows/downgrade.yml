@@ -17,20 +17,18 @@ concurrency:
 
 jobs:
   downgrade_test:
-    name: Downgrade ${{ matrix.os }} on ${{ matrix.version }} - ${{ github.event_name }}
+    name: Downgrade ${{ matrix.os }} on ${{ matrix.julia-version }} - ${{ github.event_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        version:
-          - '1'
-        os:
-          - ubuntu-latest
+        julia-version: [stable, lts]
+        os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v1
         with:
-          version: ${{ matrix.version }}
+          version: ${{ matrix.julia-version }}
       - uses: julia-actions/cache@v2
       #- uses: julia-actions/julia-downgrade-compat@v1
       #  with:
