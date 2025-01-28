@@ -1,5 +1,5 @@
 using RadialBasisFunctions
-using StaticArrays
+using StaticArraysCore
 using Statistics
 using HaltonSequences
 

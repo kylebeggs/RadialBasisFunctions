@@ -1,6 +1,6 @@
 using RadialBasisFunctions
 import RadialBasisFunctions as RBF
-using StaticArrays
+using StaticArraysCore
 
 @testset "Constructors and Printing" begin
     phs = PHS()
@@ -15,8 +15,7 @@ using StaticArrays
 
     @test repr(phs) == """
     Polyharmonic spline (r⁵)
-    └─Polynomial augmentation: degree 0
-    """
+    └─Polynomial augmentation: degree 0"""
 end
 
 @testset "PHS, n=1" begin

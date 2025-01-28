@@ -1,6 +1,6 @@
 using RadialBasisFunctions
 import RadialBasisFunctions as RBF
-using StaticArrays
+using StaticArraysCore
 
 @testset "Construction and Printing" begin
     @test_throws ArgumentError MonomialBasis(1, -1)

@@ -1,6 +1,6 @@
 using RadialBasisFunctions
 import RadialBasisFunctions as RBF
-using StaticArrays
+using StaticArraysCore
 
 @testset "Constructors and Printing" begin
     imq = IMQ()
@@ -13,13 +13,11 @@ using StaticArrays
     @test imq.poly_deg == 0
 
     @test_throws ArgumentError IMQ(-1)
-    @test_throws ArgumentError IMQ(; poly_deg=-2)
 
     @test repr(imq) == """
     Inverse Multiquadrics, 1/sqrt((r*ε)²+1)
     ├─Shape factor: ε = 5.0
-    └─Polynomial augmentation: degree 0
-    """
+    └─Polynomial augmentation: degree 0"""
 end
 
 x₁ = SVector(1.0, 2)

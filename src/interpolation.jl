@@ -55,7 +55,7 @@ function Base.show(io::IO, op::Interpolator)
     println(io, "├─Input type: ", typeof(first(op.x)))
     println(io, "├─Output type: ", typeof(first(op.y)))
     println(io, "├─Number of points: ", length(op.x))
-    return println(
+    return print(
         io,
         "└─Basis: ",
         print_basis(op.rbf_basis),

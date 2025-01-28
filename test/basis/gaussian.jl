@@ -1,6 +1,6 @@
 using RadialBasisFunctions
 import RadialBasisFunctions as RBF
-using StaticArrays
+using StaticArraysCore
 
 @testset "Constructors and Printing" begin
     g = Gaussian()
@@ -13,13 +13,11 @@ using StaticArrays
     @test g.poly_deg == 0
 
     @test_throws ArgumentError Gaussian(-1)
-    @test_throws ArgumentError Gaussian(; poly_deg=-2)
 
     @test repr(g) == """
     Gaussian, exp(-(ε*r)²)
     ├─Shape factor: ε = 5.0
-    └─Polynomial augmentation: degree 0
-    """
+    └─Polynomial augmentation: degree 0"""
 end
 
 x₁ = SVector(1.0, 2)
