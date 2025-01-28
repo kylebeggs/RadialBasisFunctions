@@ -123,13 +123,13 @@ function ∇(::PHS5)
     return ℒRadialBasisFunction(∇ℒ)
 end
 function ∂²(::PHS5, dim::Int)
-    return function ∂²ℒ(x, xᵢ)
+    function ∂²ℒ(x, xᵢ)
         return 5 * euclidean(x, xᵢ) * (3 * (x[dim] - xᵢ[dim])^2 + sqeuclidean(x, xᵢ))
     end
     return ℒRadialBasisFunction(∂²ℒ)
 end
 function ∇²(::PHS5)
-    return function ∇²ℒ(x, xᵢ)
+    function ∇²ℒ(x, xᵢ)
         return sum(5 * euclidean(x, xᵢ) * (3 * (x .- xᵢ) .^ 2 .+ sqeuclidean(x, xᵢ)))
     end
     return ℒRadialBasisFunction(∇²ℒ)

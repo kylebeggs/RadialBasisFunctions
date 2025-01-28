@@ -21,6 +21,9 @@ function (m::MonomialBasis{Dim,Deg})(x) where {Dim,Deg}
 end
 (m::MonomialBasis)(b, x) = m.f(b, x)
 
+degree(::MonomialBasis{Dim,Deg}) where {Dim,Deg} = Deg
+dim(::MonomialBasis{Dim,Deg}) where {Dim,Deg} = Dim
+
 for Dim in (:1, :2, :3)
     @eval begin
         function _get_monomial_basis(::Val{$Dim}, ::Val{0})
