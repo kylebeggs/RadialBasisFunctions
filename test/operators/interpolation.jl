@@ -1,5 +1,5 @@
 using RadialBasisFunctions
-using StaticArrays
+using StaticArraysCore
 using HaltonSequences
 
 """
@@ -24,3 +24,10 @@ interp = Interpolator(x, y, PHS(3; poly_deg=2))
 
 xnew = SVector(0.5, 0.5)
 @test abs(interp(xnew) - franke(xnew)) < 1e-5
+
+@test repr(interp) == """
+Interpolator
+├─Input type: StaticArraysCore.SVector{2, Float64}
+├─Output type: Float64
+├─Number of points: 10000
+└─Basis: Polyharmonic spline (r³) with degree 2 Monomial"""

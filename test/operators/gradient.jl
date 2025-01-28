@@ -1,5 +1,5 @@
 using RadialBasisFunctions
-using StaticArrays
+using StaticArraysCore
 using Statistics
 using HaltonSequences
 
@@ -29,4 +29,9 @@ end
     ∇y = ∇(y)
     @test mean_percent_error(∇y[1], df_dx.(x2)) < 10
     @test mean_percent_error(∇y[2], df_dy.(x2)) < 10
+end
+
+@testset "Printing" begin
+    ∇ = Gradient((1, 2))
+    @test RadialBasisFunctions.print_op(∇) == "Gradient (∇f)"
 end

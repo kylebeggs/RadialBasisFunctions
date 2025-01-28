@@ -1,5 +1,5 @@
 using RadialBasisFunctions
-using StaticArrays
+using StaticArraysCore
 using Statistics
 using HaltonSequences
 
@@ -15,3 +15,5 @@ y = f.(x)
 x2 = map(x -> SVector{2}(rand(2)), 1:100)
 r = regrid(x, x2, PHS(3; poly_deg=2))
 @test mean_percent_error(r(y), f.(x2)) < 0.1
+
+@test RadialBasisFunctions.print_op(r.ℒ) == "regrid"

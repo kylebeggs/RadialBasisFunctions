@@ -101,4 +101,4 @@ function update_weights!(op::RadialBasisOperator{<:Directional})
 end
 
 # pretty printing
-print_op(op::Directional) = "Directional Gradient (∇f⋅v)"
+print_op(op::Directional) = "Directional Derivative (∇f⋅v)"

@@ -1,5 +1,5 @@
 using RadialBasisFunctions
-using StaticArrays
+using StaticArraysCore
 using Statistics
 using HaltonSequences
 
@@ -30,4 +30,9 @@ end
     x2 = SVector{2}.(HaltonPoint(2)[1:N])
     ∇² = laplacian(x, x2, PHS(3; poly_deg=4))
     @test mean_percent_error(∇²(y), ∇²f.(x2)) < 10
+end
+
+@testset "Printing" begin
+    ∇ = Laplacian(identity)
+    @test RadialBasisFunctions.print_op(∇) == "Laplacian (∇²f)"
 end

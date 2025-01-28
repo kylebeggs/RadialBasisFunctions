@@ -1,6 +1,6 @@
 using RadialBasisFunctions
 import RadialBasisFunctions as RBF
-using StaticArrays
+using StaticArraysCore
 using LinearAlgebra
 
 x = [SVector(1.0, 2.0), SVector(2.0, 1.0), SVector(1.5, 0.0)]

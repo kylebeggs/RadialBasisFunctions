@@ -10,8 +10,6 @@ struct Gaussian{T,D<:Int} <: AbstractRadialBasis
         if all(ε .< 0)
             throw(ArgumentError("Shape parameter should be > 0. (ε=$ε)"))
         end
-        poly_deg < -1 &&
-            throw(ArgumentError("Augmented Monomial degree must be at least 0 (constant)."))
         return new{T,D}(ε, poly_deg)
     end
 end
@@ -47,11 +45,8 @@ end
 function Base.show(io::IO, rbf::Gaussian)
     print(io, "Gaussian, exp(-(ε*r)²)")
     print(io, "\n├─Shape factor: ε = $(rbf.ε)")
-    if rbf.poly_deg < 0
-        print(io, "\n└─No Monomial augmentation")
-    else
-        print(io, "\n└─Polynomial augmentation: degree $(rbf.poly_deg)")
-    end
+    print(io, "\n└─Polynomial augmentation: degree $(rbf.poly_deg)")
+    return nothing
 end
 
 print_basis(rbf::Gaussian) = "Gaussian (ε = $(rbf.ε))"

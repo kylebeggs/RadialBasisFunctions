@@ -1,6 +1,12 @@
 using RadialBasisFunctions
 import RadialBasisFunctions as RBF
-using StaticArrays
+using StaticArraysCore
+
+@testset "Construction and Printing" begin
+    @test_throws ArgumentError MonomialBasis(1, -1)
+    m = MonomialBasis(1, 0)
+    @test repr(m) == "MonomialBasis of degree 0 in 1 dimensions"
+end
 
 @testset "dim=1, deg=0" begin
     inputs = (SVector(2.0), 2.0)

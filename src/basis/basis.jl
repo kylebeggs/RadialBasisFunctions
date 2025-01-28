@@ -23,11 +23,3 @@ unicode_order(::Val{6}) = "⁶"
 unicode_order(::Val{7}) = "⁷"
 unicode_order(::Val{8}) = "⁸"
 unicode_order(::Val{9}) = "⁹"
-
-function Base.show(io::IO, basis::B) where {B<:AbstractRadialBasis}
-    if basis.poly_deg < 0
-        print(io, "\n  No Monomial augmentation")
-    else
-        print(io, "\n  Monomial: degree $(basis.poly_deg)")
-    end
-end
