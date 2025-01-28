@@ -69,3 +69,8 @@ end
     @test mean_percent_error(∂x(y), df_dx.(x2)) < 10
     @test mean_percent_error(∂y(y), df_dy.(x2)) < 10
 end
+
+@testset "Printing" begin
+    ∂ = Partial(identity, 1, 2)
+    @test RadialBasisFunctions.print_op(∂) == "∂ⁿf/∂xᵢ (n = 1, i = 2)"
+end

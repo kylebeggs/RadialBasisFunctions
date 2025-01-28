@@ -7,8 +7,6 @@ struct IMQ{T,D<:Int} <: AbstractRadialBasis
         if all(ε .< 0)
             throw(ArgumentError("Shape parameter should be > 0. (ε=$ε)"))
         end
-        poly_deg < -1 &&
-            throw(ArgumentError("Augmented Monomial degree must be at least 0 (constant)."))
         return new{T,D}(ε, poly_deg)
     end
 end

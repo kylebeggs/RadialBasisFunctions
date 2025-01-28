@@ -45,3 +45,8 @@ end
     exact = map((x, vv) -> SVector(df_dx(x), df_dy(x)) ⋅ vv, x2, v)
     @test mean_percent_error(∇v(y), exact) < 10
 end
+
+@testset "Printing" begin
+    ∇v = Directional((1, 2), (3, 4))
+    @test RadialBasisFunctions.print_op(∇v) == "Directional Derivative (∇f⋅v)"
+end

@@ -2,7 +2,7 @@ using RadialBasisFunctions
 import RadialBasisFunctions as RBF
 using StaticArrays
 
-@testset "Constructors" begin
+@testset "Constructors and Printing" begin
     phs = PHS()
     @test phs isa PHS3
     @test phs.poly_deg == 2
@@ -12,6 +12,11 @@ using StaticArrays
 
     @test_throws ArgumentError PHS(2; poly_deg=-1)
     @test_throws ArgumentError PHS(3; poly_deg=-2)
+
+    @test repr(phs) == """
+    Polyharmonic spline (r⁵)
+    └─Polynomial augmentation: degree 0
+    """
 end
 
 @testset "PHS, n=1" begin

@@ -2,7 +2,7 @@ using RadialBasisFunctions
 import RadialBasisFunctions as RBF
 using StaticArrays
 
-@testset "Constructors" begin
+@testset "Constructors and Printing" begin
     g = Gaussian()
     @test g isa Gaussian
     @test g.ε == 1
@@ -14,6 +14,12 @@ using StaticArrays
 
     @test_throws ArgumentError Gaussian(-1)
     @test_throws ArgumentError Gaussian(; poly_deg=-2)
+
+    @test repr(g) == """
+    Gaussian, exp(-(ε*r)²)
+    ├─Shape factor: ε = 5.0
+    └─Polynomial augmentation: degree 0
+    """
 end
 
 x₁ = SVector(1.0, 2)

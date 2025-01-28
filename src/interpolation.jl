@@ -59,7 +59,6 @@ function Base.show(io::IO, op::Interpolator)
         io,
         "└─Basis: ",
         print_basis(op.rbf_basis),
-        " with degree $(_get_deg(op.monomial_basis)) Monomial",
+        " with degree $(degree(op.monomial_basis)) Monomial",
     )
 end
-_get_deg(::MonomialBasis{Dim,Deg}) where {Dim,Deg} = Deg
