@@ -1,5 +1,9 @@
 using SafeTestsets
 
+@safetestset "Basis - General Utils" begin
+    include("basis/basis.jl")
+end
+
 @safetestset "Polyharmonic Splines" begin
     include("basis/polyharmonic_spline.jl")
 end

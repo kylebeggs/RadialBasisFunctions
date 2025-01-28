@@ -26,12 +26,12 @@ function ∂virtual(
     return if backward
         li = regrid(data, eval_points .- Ref(dx), basis; k=k)
         update_weights!(li)
-        w = columnwise_div(self.weights .- li.weights, Δ)
+        w = (self.weights .- li.weights) ./ Δ
         x -> w * x
     else # forward difference
         ri = regrid(data, eval_points .+ Ref(dx), basis; k=k)
         update_weights!(ri)
-        w = columnwise_div((ri.weights .- self.weights), Δ)
+        w = (ri.weights .- self.weights) ./ Δ
         x -> w * x
     end
 end

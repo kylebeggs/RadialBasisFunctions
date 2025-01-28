@@ -8,30 +8,6 @@ abstract type AbstractBasis end
 """
 abstract type AbstractRadialBasis <: AbstractBasis end
 
-struct ℒRadialBasisFunction{F<:Function}
-    f::F
-end
-(ℒrbf::ℒRadialBasisFunction)(x, xᵢ) = ℒrbf.f(x, xᵢ)
-
-struct ℒMonomialBasis{Dim,Deg,F<:Function}
-    f::F
-    function ℒMonomialBasis(dim::T, deg::T, f) where {T<:Int}
-        if deg < 0
-            throw(ArgumentError("Monomial basis must have non-negative degree"))
-        end
-        return new{dim,deg,typeof(f)}(f)
-    end
-end
-function (ℒmon::ℒMonomialBasis{Dim,Deg})(x) where {Dim,Deg}
-    b = ones(_get_underlying_type(x), binomial(Dim + Deg, Dim))
-    ℒmon(b, x)
-    return b
-end
-(m::ℒMonomialBasis)(b, x) = m.f(b, x)
-
-degree(::ℒMonomialBasis{Dim,Deg}) where {Dim,Deg} = Deg
-dim(::ℒMonomialBasis{Dim,Deg}) where {Dim,Deg} = Dim
-
 include("polyharmonic_spline.jl")
 include("inverse_multiquadric.jl")
 include("gaussian.jl")
