@@ -41,7 +41,5 @@ function gradient(
     return RadialBasisOperator(ℒ, data, eval_points, basis; k=k, adjl=adjl)
 end
 
-Base.size(op::RadialBasisOperator{<:Gradient}) = size(first(op.weights))
-
 # pretty printing
 print_op(op::Gradient) = "Gradient (∇f)"

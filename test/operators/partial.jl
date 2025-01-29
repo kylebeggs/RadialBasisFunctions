@@ -70,6 +70,10 @@ end
     @test mean_percent_error(∂y(y), df_dy.(x2)) < 10
 end
 
+@testset "Higher Order Derivatives" begin
+    @test_throws ArgumentError partial(x, 3, 1)
+end
+
 @testset "Printing" begin
     ∂ = Partial(identity, 1, 2)
     @test RadialBasisFunctions.print_op(∂) == "∂ⁿf/∂xᵢ (n = 1, i = 2)"
