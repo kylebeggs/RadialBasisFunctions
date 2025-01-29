@@ -137,7 +137,6 @@ function update_weights!(op::RadialBasisOperator)
 end
 
 function update_weights!(op::RadialBasisOperator{<:VectorValuedOperator})
-    println("Updating weights")
     for (i, ℒ) in enumerate(op.ℒ.ℒ)
         op.weights[i] .= _build_weights(ℒ, op)
     end
