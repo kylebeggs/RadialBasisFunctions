@@ -1,6 +1,6 @@
 using SafeTestsets
 
-@safetestset "Basis - General Utils" begin
+@safetestset "Basis - General" begin
     include("basis/basis.jl")
 end
 
@@ -18,6 +18,10 @@ end
 
 @safetestset "Monomial" begin
     include("basis/monomial.jl")
+end
+
+@safetestset "Operators" begin
+    include("operators/operators.jl")
 end
 
 @safetestset "Partial Derivatives" begin

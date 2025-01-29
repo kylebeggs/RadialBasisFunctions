@@ -47,21 +47,11 @@ function ∇²(rbf::IMQ)
     end
 end
 
-function shape_param_franke(x)
-    # modified Franke's formula for double precision as initial guess
-    D = 2.0 * euclidean(first(x), last(x))
-    N = size(points, 2)
-    return D / (0.8 * (N^0.25))
-end
-
 function Base.show(io::IO, rbf::IMQ)
     print(io, "Inverse Multiquadrics, 1/sqrt((r*ε)²+1)")
     print(io, "\n├─Shape factor: ε = $(rbf.ε)")
-    if rbf.poly_deg < 0
-        print(io, "\n└─No Monomial augmentation")
-    else
-        print(io, "\n└─Polynomial augmentation: degree $(rbf.poly_deg)")
-    end
+    print(io, "\n└─Polynomial augmentation: degree $(rbf.poly_deg)")
+    return nothing
 end
 
 print_basis(rbf::IMQ) = "Inverse Multiquadric (ε = $(rbf.ε))"

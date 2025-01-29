@@ -85,7 +85,6 @@ end
 function update_weights!(op::RadialBasisOperator{<:Directional})
     v = op.ℒ.v
     N = length(first(op.data))
-    @assert length(v) == N || length(v) == size(op)[1] "wrong size for v"
     if length(v) == N
         op.weights .= mapreduce(+, enumerate(op.ℒ.ℒ)) do (i, ℒ)
             _build_weights(ℒ, op) * v[i]
@@ -96,7 +95,7 @@ function update_weights!(op::RadialBasisOperator{<:Directional})
             Diagonal(vv[i]) * _build_weights(ℒ, op)
         end
     end
-    validate_cache(op)
+    validate_cache!(op)
     return nothing
 end
 
