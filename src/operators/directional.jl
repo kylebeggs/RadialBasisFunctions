@@ -71,12 +71,12 @@ function _build_weights(ℒ::Directional, data, eval_points, adjl, basis)
     N = length(first(data))
     @assert length(v) == N || length(v) == length(data) "wrong size for v"
     if length(v) == N
-        return mapreduce(+, enumerate(ℒ.ℒ)) do (i, ℒ)
+        return mapreduce(+, enumerate(ℒ)) do (i, ℒ)
             _build_weights(ℒ, data, eval_points, adjl, basis) * v[i]
         end
     else
         vv = ntuple(i -> getindex.(v, i), N)
-        return mapreduce(+, enumerate(ℒ.ℒ)) do (i, ℒ)
+        return mapreduce(+, enumerate(ℒ)) do (i, ℒ)
             Diagonal(vv[i]) * _build_weights(ℒ, data, eval_points, adjl, basis)
         end
     end
@@ -86,12 +86,12 @@ function update_weights!(op::RadialBasisOperator{<:Directional})
     v = op.ℒ.v
     N = length(first(op.data))
     if length(v) == N
-        op.weights .= mapreduce(+, enumerate(op.ℒ.ℒ)) do (i, ℒ)
+        op.weights .= mapreduce(+, enumerate(op.ℒ)) do (i, ℒ)
             _build_weights(ℒ, op) * v[i]
         end
     else
         vv = ntuple(i -> getindex.(v, i), N)
-        op.weights .= mapreduce(+, enumerate(op.ℒ.ℒ)) do (i, ℒ)
+        op.weights .= mapreduce(+, enumerate(op.ℒ)) do (i, ℒ)
             Diagonal(vv[i]) * _build_weights(ℒ, op)
         end
     end

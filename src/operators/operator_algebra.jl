@@ -1,9 +1,9 @@
-for op in (:+, :-)
-    @eval function Base.$op(a::ℒRadialBasisFunction, b::ℒRadialBasisFunction)
-        additive_ℒRBF(x, xᵢ) = Base.$op(a(x, xᵢ), b(x, xᵢ))
-        return ℒRadialBasisFunction(additive_ℒRBF)
-    end
-end
+#for op in (:+, :-)
+#    @eval function Base.$op(a::ℒRadialBasisFunction, b::ℒRadialBasisFunction)
+#        additive_ℒRBF(x, xᵢ) = Base.$op(a(x, xᵢ), b(x, xᵢ))
+#        return ℒRadialBasisFunction(additive_ℒRBF)
+#    end
+#end
 
 for op in (:+, :-)
     @eval function Base.$op(

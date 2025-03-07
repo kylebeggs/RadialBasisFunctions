@@ -3,10 +3,13 @@
 
 Builds an operator for a first order partial derivative.
 """
-struct Partial{L<:Function,T<:Int} <: ScalarValuedOperator
-    ℒ::L
+struct Partial{T<:Int} <: ScalarValuedOperator
     order::T
     dim::T
+end
+
+function (op::Partial)(x)
+    return ∂(x, op.order, op.dim)
 end
 
 # convienience constructors
@@ -23,10 +26,7 @@ function partial(
     k::T=autoselect_k(data, basis),
     adjl=find_neighbors(data, k),
 ) where {T<:Int,B<:AbstractRadialBasis}
-    f = let o = order, dim = dim
-        x -> ∂(x, o, dim)
-    end
-    ℒ = Partial(f, order, dim)
+    ℒ = Partial(order, dim)
     return RadialBasisOperator(ℒ, data, basis; k=k, adjl=adjl)
 end
 
@@ -44,10 +44,7 @@ function partial(
     k::T=autoselect_k(data, basis),
     adjl=find_neighbors(data, eval_points, k),
 ) where {T<:Int,B<:AbstractRadialBasis}
-    f = let o = order, dim = dim
-        x -> ∂(x, o, dim)
-    end
-    ℒ = Partial(f, order, dim)
+    ℒ = Partial(order, dim)
     return RadialBasisOperator(ℒ, data, eval_points, basis; k=k, adjl=adjl)
 end
 

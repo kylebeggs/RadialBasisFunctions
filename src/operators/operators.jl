@@ -2,8 +2,6 @@ abstract type AbstractOperator end
 abstract type ScalarValuedOperator <: AbstractOperator end
 abstract type VectorValuedOperator <: AbstractOperator end
 
-(op::AbstractOperator)(x) = op.ℒ(x)
-
 """
     struct RadialBasisOperator
 
@@ -131,13 +129,13 @@ end
 
 # update weights
 function update_weights!(op::RadialBasisOperator)
-    op.weights .= _build_weights(op.ℒ.ℒ, op)
+    op.weights .= _build_weights(op.ℒ, op)
     validate_cache!(op)
     return nothing
 end
 
 function update_weights!(op::RadialBasisOperator{<:VectorValuedOperator})
-    for (i, ℒ) in enumerate(op.ℒ.ℒ)
+    for (i, ℒ) in enumerate(op.ℒ)
         op.weights[i] .= _build_weights(ℒ, op)
     end
     validate_cache!(op)
