@@ -21,11 +21,11 @@ export degree, dim
 include("utils.jl")
 export find_neighbors, reorder_points!
 
-include("solve.jl")
-
 include("operators/operators.jl")
 export RadialBasisOperator, ScalarValuedOperator, VectorValuedOperator
 export update_weights!, is_cache_valid
+
+include("solve.jl")
 
 include("operators/partial.jl")
 export Partial, partial
