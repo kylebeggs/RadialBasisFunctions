@@ -4,7 +4,7 @@
 Operator for the sum of the second derivatives w.r.t. each independent variable.
 """
 struct Laplacian <: ScalarValuedOperator end
-(::Laplacian)(x) = ∇²(x)
+(::Laplacian)(basis) = ∇²(basis)
 
 # convienience constructors
 function laplacian(

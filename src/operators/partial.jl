@@ -7,10 +7,7 @@ struct Partial{T<:Int} <: ScalarValuedOperator
     order::T
     dim::T
 end
-
-function (op::Partial)(x)
-    return ∂(x, op.order, op.dim)
-end
+(op::Partial)(basis) = ∂(basis, op.order, op.dim)
 
 # convienience constructors
 """

@@ -1,6 +1,6 @@
 abstract type AbstractOperator end
 abstract type ScalarValuedOperator <: AbstractOperator end
-abstract type VectorValuedOperator <: AbstractOperator end
+abstract type VectorValuedOperator{Dim} <: AbstractOperator end
 
 """
     struct RadialBasisOperator
@@ -51,31 +51,6 @@ function RadialBasisOperator(
     adjl=find_neighbors(data, eval_points, k),
 ) where {TD,TE,T<:Int,B<:AbstractRadialBasis}
     weights = _build_weights(ℒ, data, eval_points, adjl, basis)
-    return RadialBasisOperator(ℒ, weights, data, eval_points, adjl, basis, true)
-end
-
-function RadialBasisOperator(
-    ℒ::VectorValuedOperator,
-    data::AbstractVector,
-    basis::B=PHS(3; poly_deg=2);
-    k::T=autoselect_k(data, basis),
-    adjl=find_neighbors(data, k),
-) where {T<:Int,B<:AbstractRadialBasis}
-    weights = ntuple(i -> _build_weights(ℒ.ℒ[i], data, data, adjl, basis), length(ℒ.ℒ))
-    return RadialBasisOperator(ℒ, weights, data, data, adjl, basis, true)
-end
-
-function RadialBasisOperator(
-    ℒ::VectorValuedOperator,
-    data::AbstractVector{TD},
-    eval_points::AbstractVector{TE},
-    basis::B=PHS(3; poly_deg=2);
-    k::T=autoselect_k(data, basis),
-    adjl=find_neighbors(data, eval_points, k),
-) where {TD,TE,T<:Int,B<:AbstractRadialBasis}
-    weights = ntuple(length(ℒ.ℒ)) do i
-        _build_weights(ℒ.ℒ[i], data, eval_points, adjl, basis)
-    end
     return RadialBasisOperator(ℒ, weights, data, eval_points, adjl, basis, true)
 end
 
@@ -134,9 +109,10 @@ function update_weights!(op::RadialBasisOperator)
     return nothing
 end
 
-function update_weights!(op::RadialBasisOperator{<:VectorValuedOperator})
-    for (i, ℒ) in enumerate(op.ℒ)
-        op.weights[i] .= _build_weights(ℒ, op)
+function update_weights!(op::RadialBasisOperator{<:VectorValuedOperator{Dim}}) where {Dim}
+    new_weights = _build_weights(op.ℒ, op)
+    for i in 1:Dim
+        op.weights[i] .= new_weights[i]
     end
     validate_cache!(op)
     return nothing
