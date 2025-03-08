@@ -78,8 +78,8 @@ using PrecompileTools
             ∂x = ∂(z)
 
             # gradient
-            #∇ = gradient(x, b)
-            #∇z = ∇(z)
+            ∇ = gradient(x, b)
+            ∇z = ∇(z)
 
             # laplacian
             ∇² = laplacian(x, b)
